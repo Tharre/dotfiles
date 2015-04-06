@@ -170,4 +170,6 @@ if type "archey" > /dev/null; then
     archey # nice system information and arch logo
 fi
 
-cat ~/TODO
+if [ -e "~/TODO" ]; then
+    cat ~/TODO
+fi
