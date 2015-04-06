@@ -1,24 +1,24 @@
 #!/bin/sh
 
-root=$(pwd)
+dotfiles=$(pwd)
 
 # make sure all submodules are there
 git submodule update --init
 
 # [zsh]
-ln -sf "$root/shell/_zshrc" "$HOME/.zshrc"
-ln -sfT "$root/shell/_oh-my-zsh" "$HOME/.oh-my-zsh"
+ln -sf "$dotfiles/shell/_zshrc" "$HOME/.zshrc"
+ln -sfT "$dotfiles/shell/_oh-my-zsh" "$HOME/.oh-my-zsh"
 
 # [emacs]
-ln -sfT "$root/dotEmacs" "$HOME/.emacs.d"
+ln -sfT "$dotfiles/dotEmacs" "$HOME/.emacs.d"
 
 # [vim]
-ln -sf "$root/shell/_vimrc" "$HOME/.vimrc"
+ln -sf "$dotfiles/shell/_vimrc" "$HOME/.vimrc"
 
 # [git]
-ln -sf "$root/shell/_gitconfig" "$HOME/.gitconfig"
+ln -sf "$dotfiles/shell/_gitconfig" "$HOME/.gitconfig"
 
 # [tmux]
-ln -sf "$root/shell/_tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$dotfiles/shell/_tmux.conf" "$HOME/.tmux.conf"
 
 echo "Finished installing dotfiles"
