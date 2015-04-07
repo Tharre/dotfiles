@@ -21,4 +21,7 @@ ln -sf "$dotfiles/shell/_gitconfig" "$HOME/.gitconfig"
 # [tmux]
 ln -sf "$dotfiles/shell/_tmux.conf" "$HOME/.tmux.conf"
 
+# [arch linux]
+ln -sf "$dotfiles/shell/_makepkg.conf" "$HOME/.makepkg.conf"
+
 echo "Finished installing dotfiles"
