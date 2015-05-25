@@ -7,11 +7,9 @@
 let mapleader="," " set leader early as otherwise it wouldn't work
 
 " ----- NeoBundle -----
-let reinstall=0
 if !filereadable(expand('~/.vim/bundle/neobundle.vim/README.md'))
 	" if vundle isn't currently installed
 	silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-	let reinstall=1
 endif
 
 if has('vim_starting')
@@ -48,8 +46,10 @@ NeoBundle 'tpope/vim-surround'
 "NeoBundle 'msanders/snipmate.vim'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'wting/rust.vim'
+NeoBundle 'ledger/vim-ledger'
 "NeoBundle 'godlygeek/tabular'
 "NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'junegunn/vim-easy-align'
 
 call neobundle#end()
 
@@ -57,9 +57,7 @@ filetype plugin indent on
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
-if reinstall
-	NeoBundleInstall
-endif
+NeoBundleCheck
 
 " ----- general settings -----
 set encoding=utf-8
