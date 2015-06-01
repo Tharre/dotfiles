@@ -119,6 +119,12 @@ let g:airline#extensions#syntastic#enabled = 0
 " Unite
 nnoremap <C-p> :Unite file_rec/async<cr>
 
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 if !has('clipboard')
 	echo "Clipboard not supported!"
 endif
