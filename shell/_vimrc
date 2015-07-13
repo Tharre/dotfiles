@@ -3,6 +3,7 @@
 " http://learnvimscriptthehardway.stevelosh.com/chapters/52.html
 " May install in the future:
 " Git wrapper, similar to magit: 'https://github.com/tpope/vim-fugitive'
+" https://github.com/tony/vim-config
 
 let mapleader="," " set leader early as otherwise it wouldn't work
 
