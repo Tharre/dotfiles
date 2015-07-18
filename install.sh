@@ -21,10 +21,14 @@ ln -sf "$dotfiles/shell/_gitconfig" "$HOME/.gitconfig"
 # [tmux]
 ln -sf "$dotfiles/shell/_tmux.conf" "$HOME/.tmux.conf"
 
-# [arch linux]
-ln -sf "$dotfiles/shell/_makepkg.conf" "$HOME/.makepkg.conf"
-
 # [gdb]
 ln -sf "$dotfiles/shell/_gdbinit" "$HOME/.gdbinit"
+
+if [ "$1" = "arch" ]; then
+	echo "Performing full installation."
+
+	# [arch linux]
+	ln -sf "$dotfiles/shell/_makepkg.conf" "$HOME/.makepkg.conf"
+fi
 
 echo "Finished installing dotfiles"
