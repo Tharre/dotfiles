@@ -45,7 +45,7 @@ fi
 export PATH=$PATH:~/.cabal/bin
 
 # ruby
-export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
+export PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
 
 # vim
 export EDITOR=vim
