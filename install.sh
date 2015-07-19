@@ -29,6 +29,12 @@ if [ "$1" = "arch" ]; then
 
 	# [arch linux]
 	ln -sf "$dotfiles/shell/_makepkg.conf" "$HOME/.makepkg.conf"
+
+	# [email]
+	ln -sfT "$dotfiles/email/_mutt" "$HOME/.mutt"
+	ln -sf "$dotfiles/email/_offlineimaprc" "$HOME/.offlineimaprc"
+	ln -sf "$dotfiles/email/_msmtprc" "$HOME/.msmtprc"
+	mkdir ~/.mail
 fi
 
 echo "Finished installing dotfiles"
