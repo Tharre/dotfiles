@@ -1,16 +1,13 @@
-#!/bin/sh
+#!/bin/sh -e
 
 dotfiles=$(pwd)
 
 # make sure all submodules are there
-git submodule update --init
+git submodule update --init --recursive
 
 # [zsh]
 ln -sf "$dotfiles/shell/_zshrc" "$HOME/.zshrc"
 ln -sfT "$dotfiles/shell/_oh-my-zsh" "$HOME/.oh-my-zsh"
-
-# [emacs]
-ln -sfT "$dotfiles/dotEmacs" "$HOME/.emacs.d"
 
 # [vim]
 ln -sf "$dotfiles/shell/_vimrc" "$HOME/.vimrc"
@@ -34,7 +31,7 @@ if [ "$1" = "arch" ]; then
 	ln -sfT "$dotfiles/email/_mutt" "$HOME/.mutt"
 	ln -sf "$dotfiles/email/_offlineimaprc" "$HOME/.offlineimaprc"
 	ln -sf "$dotfiles/email/_msmtprc" "$HOME/.msmtprc"
-	mkdir ~/.mail
+	mkdir -p ~/.mail
 fi
 
 echo "Finished installing dotfiles"
