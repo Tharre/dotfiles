@@ -8,6 +8,7 @@ git submodule update --init --recursive
 # [zsh]
 ln -sf "$dotfiles/shell/_zshrc" "$HOME/.zshrc"
 ln -sfT "$dotfiles/shell/_oh-my-zsh" "$HOME/.oh-my-zsh"
+ln -sfT "$dotfiles/shell/themes" "$HOME/.oh-my-zsh/custom/themes"
 
 # [vim]
 ln -sf "$dotfiles/shell/_vimrc" "$HOME/.vimrc"
