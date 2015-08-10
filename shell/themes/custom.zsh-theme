@@ -1,7 +1,6 @@
 # custom.zsh-theme
 # based on the af-magic theme
 
-if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 local return_code="%(?..%{$fg[red]%}:%?%{$reset_color%})"
 
 # primary prompt
