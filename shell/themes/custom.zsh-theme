@@ -4,7 +4,7 @@
 local return_code="%(?..%{$fg[red]%}:%?%{$reset_color%})"
 
 # primary prompt
-PROMPT='$FG[032]%(7~"[..]/")%7~\
+PROMPT='$FG[032]%(8~"[..]/")%7~\
 $(git_prompt_info) \
 $FG[105]%1(j.[%j] .)%(!.#.$)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
