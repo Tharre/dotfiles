@@ -12,6 +12,7 @@ ln -sfT "$dotfiles/shell/themes" "$HOME/.oh-my-zsh/custom/themes"
 
 # [vim]
 ln -sf "$dotfiles/shell/_vimrc" "$HOME/.vimrc"
+ln -sfT "$dotfiles/shell/_vim" "$HOME/.vim"
 
 # [git]
 ln -sf "$dotfiles/shell/_gitconfig" "$HOME/.gitconfig"
