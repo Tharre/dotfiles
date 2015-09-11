@@ -23,6 +23,9 @@ ln -sf "$dotfiles/shell/_tmux.conf" "$HOME/.tmux.conf"
 # [gdb]
 ln -sf "$dotfiles/shell/_gdbinit" "$HOME/.gdbinit"
 
+# [gpg]
+ln -sfT "$dotfiles/shell/_gnupg" "$HOME/.gnupg"
+
 if [ "$1" = "arch" ]; then
 	echo "Performing full installation."
 
