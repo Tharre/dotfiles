@@ -25,7 +25,7 @@ set thorough_search      # strip headers and eval mimes before searching
 # Sidebar Patch --------------------------------------
 set sidebar_delim   = '  │'
 set sidebar_visible = yes
-set sidebar_width   = 24
+set sidebar_width   = 26
 color sidebar_new color221 color233
 
 # Status Bar -----------------------------------------
@@ -48,12 +48,12 @@ set spoolfile = "+tharre3@gmail.com/INBOX"
 
 # Mailboxes to show in the sidebar.
 mailboxes +tharre3@gmail.com/INBOX \
-          +tharre3@gmail.com/archive \
+          +tharre3@gmail.com/Archives \
           +tharre3@gmail.com/sent \
           +tharre3@gmail.com/drafts \
 
 # Other special folders.
-set mbox      = "+tharre3@gmail.com/archive"
+set mbox      = "+tharre3@gmail.com/Archives"
 set postponed = "+tharre3@gmail.com/drafts"
 
 # Index View Options ---------------------------------
