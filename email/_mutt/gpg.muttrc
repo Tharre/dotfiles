@@ -1,0 +1,11 @@
+# Use GPGME
+set crypt_use_gpgme = yes
+
+# Automatically sign all outgoing mails
+set crypt_autosign = yes
+
+# Encrypt replies to encrypted mail
+set crypt_replyencrypt = yes
+
+# Attempt to verify email signatures automatically
+set crypt_verify_sig = yes

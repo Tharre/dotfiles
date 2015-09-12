@@ -137,3 +137,4 @@ set sendmail_wait = 0
 unset record
 
 source ~/.mutt/colors.muttrc
+source ~/.mutt/gpg.muttrc
