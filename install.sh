@@ -26,6 +26,9 @@ ln -sf "$dotfiles/shell/_gdbinit" "$HOME/.gdbinit"
 # [gpg]
 ln -sfT "$dotfiles/shell/_gnupg" "$HOME/.gnupg"
 
+# [emacs]
+ln -sfT "$dotfiles/shell/_emacs.d" "$HOME/.emacs.d"
+
 if [ "$1" = "arch" ]; then
 	echo "Performing full installation."
 
