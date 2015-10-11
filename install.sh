@@ -32,6 +32,24 @@ ln -sfT "$dotfiles/shell/_emacs.d" "$HOME/.emacs.d"
 # [user dirs]
 ln -sf "$dotfiles/config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
 
+# create directories
+mkdir -p ~/bin
+mkdir -p ~/etc
+mkdir -p ~/share
+mkdir -p ~/media
+mkdir -p ~/media/games
+mkdir -p ~/media/music
+mkdir -p ~/media/pictures
+mkdir -p ~/media/videos
+mkdir -p ~/var
+mkdir -p ~/var/cache
+mkdir -p ~/var/downloads
+mkdir -p ~/var/log
+mkdir -p ~/var/run
+mkdir -p ~/var/tmp
+mkdir -p ~/var/vim
+mkdir -p ~/var/VMs
+
 if [ "$1" = "arch" ]; then
 	echo "Performing full installation."
 
