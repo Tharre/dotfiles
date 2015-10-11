@@ -164,6 +164,7 @@ function 256color_test {
 ## PATH
 export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
+export PATH=$PATH:$HOME/bin
 
 ## alias
 
