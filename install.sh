@@ -29,6 +29,9 @@ ln -sfT "$dotfiles/shell/_gnupg" "$HOME/.gnupg"
 # [emacs]
 ln -sfT "$dotfiles/shell/_emacs.d" "$HOME/.emacs.d"
 
+# [user dirs]
+ln -sf "$dotfiles/config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
+
 if [ "$1" = "arch" ]; then
 	echo "Performing full installation."
 
