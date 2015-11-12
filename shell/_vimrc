@@ -96,3 +96,6 @@ au BufNewFile,BufRead *.java set tabstop=4 softtabstop=4 shiftwidth=4 smarttab a
 nmap <leader>a :JavaImportOrganize<cr>
 nmap <leader>t :ProjectTree<cr>
 nmap <leader>o :ProjectOpen<cr>
+
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
