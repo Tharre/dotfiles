@@ -1,0 +1,3 @@
+# Specifies the workspace directory to use
+# See $ECLIPSE_HOME/configuration/config.ini for other osgi properties.
+osgi.instance.area.default=@user.home/var/workspace

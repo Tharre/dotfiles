@@ -91,3 +91,8 @@ nmap ga <Plug>(EasyAlign)
 
 " java
 au BufNewFile,BufRead *.java set tabstop=4 softtabstop=4 shiftwidth=4 smarttab autoindent cc=121
+
+" eclim
+nmap <leader>a :JavaImportOrganize<cr>
+nmap <leader>t :ProjectTree<cr>
+nmap <leader>o :ProjectOpen<cr>

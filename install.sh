@@ -32,6 +32,9 @@ ln -sfT "$dotfiles/shell/_emacs.d" "$HOME/.emacs.d"
 # [user dirs]
 ln -sf "$dotfiles/config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
 
+# [eclim]
+ln -sf "$dotfiles/shell/_eclimrc" "$HOME/.eclimrc"
+
 # create directories
 mkdir -p ~/bin
 mkdir -p ~/etc
