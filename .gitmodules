@@ -4,9 +4,6 @@
 [submodule "shell/_vim/bundle/vim-pathogen"]
 	path = shell/_vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "shell/_vim/bundle/vim-reload"]
-	path = shell/_vim/bundle/vim-reload
-	url = https://github.com/xolox/vim-reload.git
 [submodule "shell/_vim/bundle/vim-misc"]
 	path = shell/_vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
