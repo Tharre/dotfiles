@@ -39,6 +39,9 @@ set cc=81
 set list
 set listchars=tab:>-,trail:~
 
+" jk is escape
+inoremap jk <esc>
+
 augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
