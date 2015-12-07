@@ -1,13 +1,11 @@
-" github.com/samnang/dotfiles/blob/master/vimrc
-" http://nvie.com/posts/how-i-boosted-my-vim/
-" http://learnvimscriptthehardway.stevelosh.com/chapters/52.html
-" May install in the future:
-" Git wrapper, similar to magit: 'https://github.com/tpope/vim-fugitive'
-" https://github.com/tony/vim-config
 " Plugins for review:
 "   'msanders/snipmate.vim'
 "   'godlygeek/tabular'
 "   'plasticboy/vim-markdown'
+" Consider using sections like this:
+"     Section Name {{{
+"     set number "This will be folded
+"     }}}
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
