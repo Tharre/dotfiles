@@ -103,3 +103,6 @@ nmap <leader>o :ProjectOpen<cr>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
+
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
