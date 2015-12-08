@@ -31,9 +31,6 @@
 [submodule "shell/_vim/bundle/vim-easy-align"]
 	path = shell/_vim/bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
-[submodule "shell/_vim/bundle/LargeFile"]
-	path = shell/_vim/bundle/LargeFile
-	url = https://github.com/vim-scripts/LargeFile.git
 [submodule "shell/_vim/bundle/vim-distinguished"]
 	path = shell/_vim/bundle/vim-distinguished
 	url = https://github.com/Lokaltog/vim-distinguished.git
