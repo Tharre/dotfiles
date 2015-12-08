@@ -7,9 +7,6 @@
 [submodule "shell/_vim/bundle/vim-misc"]
 	path = shell/_vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
-[submodule "shell/_vim/bundle/unite.vim"]
-	path = shell/_vim/bundle/unite.vim
-	url = https://github.com/Shougo/unite.vim.git
 [submodule "shell/_vim/bundle/vim-airline"]
 	path = shell/_vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
