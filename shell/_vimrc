@@ -106,3 +106,8 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+
+set wildignore+=*.a,*.o,*.class
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png
+set wildignore+=.DS_Store,.git,.hg,.svn
+set wildignore+=*~,*.swp,*.tmp
