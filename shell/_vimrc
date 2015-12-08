@@ -66,9 +66,6 @@ map <silent> <leader>1 :diffget 2<CR> :diffupdate<CR>
 map <silent> <leader>2 :diffget 3<CR> :diffupdate<CR>
 map <silent> <leader>3 :diffget 4<CR> :diffupdate<CR>
 
-autocmd InsertEnter * :let @/=""
-autocmd InsertLeave * :let @/=""
-
 map Q @
 map <S-m> :tabprevious<CR>
 map m :tabnext<CR>
