@@ -9,6 +9,7 @@
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+execute pathogen#helptags()
 set nocompatible " Be iMproved
 let mapleader="," " set leader early as otherwise it wouldn't work
 filetype plugin indent on
