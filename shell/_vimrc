@@ -42,6 +42,8 @@ set listchars=tab:>-,trail:~
 set lazyredraw
 set wildmenu
 
+set relativenumber
+
 " jk is escape
 inoremap jk <esc>
 
