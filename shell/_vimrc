@@ -111,3 +111,6 @@ set wildignore+=*.a,*.o,*.class
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png
 set wildignore+=.DS_Store,.git,.hg,.svn
 set wildignore+=*~,*.swp,*.tmp
+
+" ctrlp
+let g:ctrlp_max_files = 1000000
