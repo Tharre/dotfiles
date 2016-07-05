@@ -15,7 +15,7 @@ ZSH_THEME="custom"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -108,6 +108,26 @@ function 256color_test {
 	done )
 }
 
+# update
+function update_dotfiles() {
+	dotfiles="$HOME/dotfiles"
+	epoch_file="$dotfiles/.updated"
+	epoch_curr=$(date +'%s')
+	[ -e "$epoch_file" ] && epoch_old=$(<"$epoch_file")
+	epoch_diff=$(($epoch_curr - ${epoch_old:-0}))
+	max_time=$((60 * 60 * 24 * 7))
+
+	if [ $(($epoch_diff / $max_time)) -ne 0 ]; then
+		echo "Updating dotfiles ..."
+
+		cd "$dotfiles"
+		git pull --rebase --stat origin master
+		echo $epoch_curr > "$epoch_file"
+
+		echo "Finished."
+	fi
+}
+
 ## PATH
 export PATH=$PATH:$HOME/bin
 
@@ -137,6 +157,8 @@ setopt EXTENDED_GLOB
 HISTSIZE=100000000
 
 ## startup
+update_dotfiles
+
 if type "archey" > /dev/null; then
 	archey # nice system information and arch logo
 fi
