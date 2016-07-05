@@ -91,65 +91,12 @@ function noproxy {
 	dconf write /system/proxy/ftp/port "$base_proxy_port"
 
 	proxy_update
-	}
+}
 
 # restart/reload applications for proxy settings to take effect
 function proxy_update {
 	killall -q dropbox
 	dropbox-cli start
-}
-
-# set lid closing action to sleep
-function set_closing_sleep {
-	get_closing_action
-	if [ $? -eq 0 ]; then
-		head -n -2 /etc/systemd/logind.conf | sudo tee /etc/systemd/logind.conf > /dev/null
-		echo "Closing action set to sleep if lid is closed."
-		sudo systemctl restart systemd-logind.service
-	else
-		echo "Already set to sleep if lid is closed."
-fi
-}
-
-# set lid closing action to nothing
-function set_closing_nothing {
-	get_closing_action
-	if [ $? -eq 1 ]; then
-		cat <<'EOF' | sudo tee -a /etc/systemd/logind.conf > /dev/null
-#custom
-HandleLidSwitch=ignore
-EOF
-	echo "Closing action set to _not_ sleep if lid is closed."
-	sudo systemctl restart systemd-logind.service
-	else
-		echo "Already set to _not_ sleep if lid is closed."
-	fi
-}
-
-# 0 is nothing, 1 is sleep
-function get_closing_action {
-	grep -q '#custom' /etc/systemd/logind.conf
-	return $?
-}
-
-function toggle_laptop_closing_action {
-	get_closing_action
-	if [ $? -eq 1 ]; then
-		set_closing_nothing
-	else
-		set_closing_sleep
-	fi
-}
-
-function update_and_sleep {
-	get_closing_action
-	save=$?
-	set_closing_nothing
-	yaourt -Syu --noconfirm
-
-	[ $save -eq 1 ] && set_closing_sleep
-
-	systemctl suspend
 }
 
 function 256color_test {
