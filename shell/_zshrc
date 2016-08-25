@@ -108,6 +108,19 @@ function 256color_test {
 	done )
 }
 
+# requires youtube-dl, mpv
+function play {
+    # Skip DASH manifest for speed purposes. This might actually disable
+    # being able to specify things like 'bestaudio' as the requested format,
+    # but try anyway.
+    # Use "$*" so that quoting the requested song isn't necessary.
+    mpv $(youtube-dl --default-search=ytsearch: \
+                     --max-downloads 1 \
+                     --youtube-skip-dash-manifest \
+                     --format="bestaudio" \
+                     -g "$*")
+}
+
 # update
 function update_dotfiles() {
 	dotfiles="$HOME/dotfiles"
