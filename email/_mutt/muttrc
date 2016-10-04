@@ -63,6 +63,10 @@ set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 bind index gg       first-entry
 bind index G        last-entry
 
+# don't skip over deleted messages
+bind index j  next-entry
+bind index k  previous-entry
+
 bind index R        group-reply
 bind index <tab>    sync-mailbox
 bind index <space>  collapse-thread
