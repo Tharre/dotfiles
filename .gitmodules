@@ -1,45 +1,45 @@
 [submodule "shell/_oh-my-zsh"]
-	path = shell/_oh-my-zsh
+	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "shell/_vim/bundle/vim-pathogen"]
-	path = shell/_vim/bundle/vim-pathogen
+	path = .vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "shell/_vim/bundle/vim-misc"]
-	path = shell/_vim/bundle/vim-misc
+	path = .vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
 [submodule "shell/_vim/bundle/vim-airline"]
-	path = shell/_vim/bundle/vim-airline
+	path = .vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
 [submodule "shell/_vim/bundle/syntastic"]
-	path = shell/_vim/bundle/syntastic
+	path = .vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 [submodule "shell/_vim/bundle/nerdcommenter"]
-	path = shell/_vim/bundle/nerdcommenter
+	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "shell/_vim/bundle/vim-surround"]
-	path = shell/_vim/bundle/vim-surround
+	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "shell/_vim/bundle/jedi-vim"]
-	path = shell/_vim/bundle/jedi-vim
+	path = .vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
 [submodule "shell/_vim/bundle/rust.vim"]
-	path = shell/_vim/bundle/rust.vim
+	path = .vim/bundle/rust.vim
 	url = https://github.com/wting/rust.vim.git
 [submodule "shell/_vim/bundle/vim-ledger"]
-	path = shell/_vim/bundle/vim-ledger
+	path = .vim/bundle/vim-ledger
 	url = https://github.com/ledger/vim-ledger.git
 [submodule "shell/_vim/bundle/vim-easy-align"]
-	path = shell/_vim/bundle/vim-easy-align
+	path = .vim/bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
 [submodule "shell/_vim/bundle/vim-distinguished"]
-	path = shell/_vim/bundle/vim-distinguished
+	path = .vim/bundle/vim-distinguished
 	url = https://github.com/Lokaltog/vim-distinguished.git
 [submodule "shell/_vim/bundle/gundo.vim"]
-	path = shell/_vim/bundle/gundo.vim
+	path = .vim/bundle/gundo.vim
 	url = https://github.com/sjl/gundo.vim.git
 [submodule "shell/_vim/bundle/ctrlp.vim"]
-	path = shell/_vim/bundle/ctrlp.vim
+	path = .vim/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "shell/_vim/bundle/vim-sleuth"]
-	path = shell/_vim/bundle/vim-sleuth
+	path = .vim/bundle/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth.git
