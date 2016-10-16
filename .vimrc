@@ -63,9 +63,9 @@ augroup reload_vimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
-map <silent> <leader>1 :diffget 2<CR> :diffupdate<CR>
-map <silent> <leader>2 :diffget 3<CR> :diffupdate<CR>
-map <silent> <leader>3 :diffget 4<CR> :diffupdate<CR>
+map <silent> <leader>1 :diffget LO<CR> :diffupdate<CR>
+map <silent> <leader>2 :diffget BA<CR> :diffupdate<CR>
+map <silent> <leader>3 :diffget RE<CR> :diffupdate<CR>
 
 map Q @
 map <S-m> :tabprevious<CR>
