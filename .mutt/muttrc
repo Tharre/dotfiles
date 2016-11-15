@@ -82,6 +82,15 @@ macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to s
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
+# Gmail-style shortcuts
+macro index gi "<change-folder>=tharre3@gmail.com/INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=tharre3@gmail.com/Archives<enter>" "Go to Archives"
+macro index gs "<change-folder>=tharre3@gmail.com/sent<enter>" "Go to sent"
+macro index gd "<change-folder>=tharre3@gmail.com/drafts<enter>" "Go to drafts"
+
+# Archive shortcut
+macro index,pager a "<save-message>=tharre3@gmail.com/Archives<enter>" "Archive"
+
 # Pager View Options ---------------------------------
 set pager_index_lines = 10 # number of index lines to show
 set pager_context = 3      # number of context lines to show
