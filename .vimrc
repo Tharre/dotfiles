@@ -113,3 +113,6 @@ nmap <leader>o :ProjectOpen<cr>
 " ctrlp
 let g:ctrlp_max_files = 1000000
 let g:ctrlp_cmd = 'CtrlPMixed'
+
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
