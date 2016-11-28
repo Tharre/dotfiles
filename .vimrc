@@ -116,3 +116,6 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
+
+" javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
