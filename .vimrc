@@ -63,6 +63,16 @@ augroup reload_vimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
+" switch buffers with space!
+nnoremap <space> :call SwitchBuffer()<CR>
+
+function! SwitchBuffer()
+    exe "ls"
+    let c = nr2char(getchar())
+    exe "b " . c
+    redraw
+endfunction
+
 map <silent> <leader>1 :diffget LO<CR> :diffupdate<CR>
 map <silent> <leader>2 :diffget BA<CR> :diffupdate<CR>
 map <silent> <leader>3 :diffget RE<CR> :diffupdate<CR>
