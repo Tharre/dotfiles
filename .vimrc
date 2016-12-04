@@ -115,11 +115,6 @@ nmap ga <Plug>(EasyAlign)
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 
-" eclim
-nmap <leader>a :JavaImportOrganize<cr>
-nmap <leader>t :ProjectTree<cr>
-nmap <leader>o :ProjectOpen<cr>
-
 " ctrlp
 let g:ctrlp_max_files = 1000000
 let g:ctrlp_cmd = 'CtrlPMixed'
