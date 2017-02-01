@@ -17,7 +17,7 @@ else
 	if [ ! -e "$target" ] || [ -L "$target" ]; then
 		# target either doesn't exist or is a symbolic link and can thus be
 		# safely replaced
-		ln -sf "$origin" "$target"
+		ln -sfn "$origin" "$target"
 	elif [ -d "$target" ]; then
 		# target is not a symbolic link, but a directory, thus we link
 		# everything into that directory instead
