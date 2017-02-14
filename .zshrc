@@ -174,8 +174,8 @@ HISTSIZE=100000000
 ## startup
 update_dotfiles
 
-if type "archey" > /dev/null; then
-	archey # nice system information and arch logo
+if type "archey3" > /dev/null; then
+	archey3 # nice system information and arch logo
 fi
 
 [ -e ~/TODO ] && cat ~/TODO
