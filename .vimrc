@@ -124,3 +124,10 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+" Automatically import
+nmap <leader>ai <Plug>(JavaComplete-Imports-AddMissing)
+
