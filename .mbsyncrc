@@ -1,0 +1,48 @@
+IMAPAccount tharre3@gmail.com
+Host imap.gmail.com
+User tharre3@gmail.com
+PassCmd "pass email/tharre3@gmail.com"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore tharre3@gmail.com-remote
+Account tharre3@gmail.com
+
+MaildirStore tharre3@gmail.com-local
+# The trailing "/" is important
+Path ~/.mail/tharre3@gmail.com/
+Inbox ~/.mail/tharre3@gmail.com/INBOX
+
+Channel tharre3@gmail.com-default
+Master :tharre3@gmail.com-remote:
+Slave :tharre3@gmail.com-local:
+Patterns * ![Gmail]* !sent !drafts !trash
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+Channel tharre3@gmail.com-sent
+Master :tharre3@gmail.com-remote:"[Gmail]/Sent Mail"
+Slave :tharre3@gmail.com-local:sent
+Create Slave
+SyncState *
+
+Channel tharre3@gmail.com-drafts
+Master :tharre3@gmail.com-remote:"[Gmail]/Drafts"
+Slave :tharre3@gmail.com-local:drafts
+Create Slave
+SyncState *
+
+Channel tharre3@gmail.com-trash
+Master :tharre3@gmail.com-remote:"[Gmail]/Bin"
+Slave :tharre3@gmail.com-local:trash
+Create Slave
+SyncState *
+
+# Get all the channels together into a group.
+Group tharre3@gmail.com
+Channel tharre3@gmail.com-default
+Channel tharre3@gmail.com-sent
+Channel tharre3@gmail.com-drafts
+Channel tharre3@gmail.com-trash

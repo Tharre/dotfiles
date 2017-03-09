@@ -5,7 +5,7 @@ if [ "$#" -ne 1 ]; then
 	git submodule update --init --recursive
 
 	# ensure mail directory exists
-	mkdir -p ~/.mail
+	mkdir -p ~/.mail/tharre3@gmail.com
 
 	find . -maxdepth 1 ! -path . ! -name .git ! -name .gitmodules \
 		! -name .gitignore ! -name .updated -name '.*' -exec "$0" {} \;
