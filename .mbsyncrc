@@ -1,8 +1,10 @@
 IMAPAccount tharre3@gmail.com
-Host imap.gmail.com
+# prefix with imaps: is deprecated - however the alternative SSLType isn't
+# widely supported at this time
+Host imaps:imap.gmail.com
 User tharre3@gmail.com
 PassCmd "~/.req_pwd.sh email/tharre3@gmail.com"
-SSLType IMAPS
+# SSLType IMAPS
 SSLVersion TLSv1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
