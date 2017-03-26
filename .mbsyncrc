@@ -1,7 +1,7 @@
 IMAPAccount tharre3@gmail.com
 Host imap.gmail.com
 User tharre3@gmail.com
-PassCmd "pass email/tharre3@gmail.com"
+PassCmd "~/.req_pwd.sh email/tharre3@gmail.com"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
