@@ -169,7 +169,8 @@ export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
 
 bindkey -M viins ' ' magic-space
 setopt EXTENDED_GLOB
-HISTSIZE=100000000
+export HISTSIZE=100000000
+export SAVEHIST=$HISTSIZE
 
 ## startup
 update_dotfiles
