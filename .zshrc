@@ -143,6 +143,13 @@ function update_dotfiles() {
 	fi
 }
 
+function suspend_after() {
+	trap 'kill $!' INT TERM EXIT
+	systemd-inhibit --what=handle-lid-switch sleep 1d &
+	eval "$1"
+	systemctl suspend
+}
+
 ## PATH
 export PATH=$PATH:$HOME/bin
 
