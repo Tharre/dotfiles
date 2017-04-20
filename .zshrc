@@ -117,8 +117,8 @@ function play {
     mpv $(youtube-dl --default-search=ytsearch: \
                      --max-downloads 1 \
                      --youtube-skip-dash-manifest \
-                     --format="bestaudio" \
-                     -g "$*")
+                     --format="bestaudio/best" \
+                     -g "$*") --no-video
 }
 
 # update
