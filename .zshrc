@@ -146,7 +146,7 @@ function update_dotfiles() {
 function suspend_after() {
 	trap 'kill $!' INT TERM EXIT
 	systemd-inhibit --what=handle-lid-switch sleep 1d &
-	eval "$1"
+	eval "$*"
 	systemctl suspend
 }
 
