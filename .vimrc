@@ -104,7 +104,9 @@ let g:airline_theme = 'powerlineish'
 "let g:airline#extensions#tabline#enabled = 1 " make tabs look crazy
 " only enable trailing whitespace checking
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
-let g:airline#extensions#syntastic#enabled = 0
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
