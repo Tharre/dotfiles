@@ -105,6 +105,8 @@ let g:airline_theme = 'powerlineish'
 " only enable trailing whitespace checking
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 
+" ALE
+let g:ale_linters = {'text': ['proselint', 'vale']}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
