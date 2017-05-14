@@ -25,6 +25,6 @@ else
 		find "$canonical" -maxdepth 1 -mindepth 1 ! -name .gitignore \
 			-exec "$0" {} \;
 	else
-		echo "Target file '$target' is not a symlink but exists, skipping"
+		echo "Target file '$target' exists, but is not a symlink. Skipping."
 	fi
 fi
