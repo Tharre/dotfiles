@@ -73,9 +73,9 @@ function! SwitchBuffer()
     redraw
 endfunction
 
-map <silent> <leader>1 :diffget LO<CR> :diffupdate<CR>
-map <silent> <leader>2 :diffget BA<CR> :diffupdate<CR>
-map <silent> <leader>3 :diffget RE<CR> :diffupdate<CR>
+map <silent> <leader>1 :diffget LO<CR>:diffupdate<CR>
+map <silent> <leader>2 :diffget BA<CR>:diffupdate<CR>
+map <silent> <leader>3 :diffget RE<CR>:diffupdate<CR>
 
 map Q @
 map <S-m> :tabprevious<CR>
