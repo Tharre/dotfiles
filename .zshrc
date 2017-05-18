@@ -108,6 +108,10 @@ function 256color_test {
 	done )
 }
 
+function utf8font_test {
+	curl http://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt
+}
+
 # requires youtube-dl, mpv
 function play {
     # Skip DASH manifest for speed purposes. This might actually disable
