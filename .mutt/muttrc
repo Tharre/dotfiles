@@ -112,6 +112,10 @@ bind pager R  group-reply
 # View attachments properly.
 bind attach <return> view-mailcap
 
+# HTML Mails ...
+auto_view text/html
+alternative_order text/plain text/enriched text/html # display html last
+
 # Compose View Options -------------------------------
 set realname = "Unkown"              # who am i?
 set envelope_from                    # which from?
