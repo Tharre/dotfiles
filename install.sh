@@ -9,6 +9,9 @@ if [ "$#" -ne 1 ]; then
 
 	find . -maxdepth 1 ! -path . ! -name .git ! -name .gitmodules \
 		! -name .gitignore ! -name .updated -name '.*' -exec "$0" {} \;
+
+	# remove broken symlinks
+	find -L "$HOME" -maxdepth 1 -type l -delete
 else
 	canonical=$(echo $1 | sed "s|^\./||")
 	target="$HOME/$canonical"
