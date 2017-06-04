@@ -135,3 +135,5 @@ nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 " Automatically import
 nmap <leader>ai <Plug>(JavaComplete-Imports-AddMissing)
 
+" markdown
+let g:vim_markdown_math = 1
