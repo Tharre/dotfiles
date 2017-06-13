@@ -4,6 +4,10 @@
 
 pass "$1" && exit
 
+# maybe gpg-agent is acting up, retry after killing it
+killall gpg-agent >&2
+pass "$1" && exit
+
 # if pass fails, request password manually
 stty -echo
 printf "Password: " >&2
