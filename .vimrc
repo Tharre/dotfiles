@@ -137,3 +137,8 @@ nmap <leader>ai <Plug>(JavaComplete-Imports-AddMissing)
 
 " markdown
 let g:vim_markdown_math = 1
+
+" html
+let g:ale_linters = {
+\   'html': ['htmlhint', 'tidy'],
+\}
