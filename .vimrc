@@ -104,6 +104,7 @@ let g:airline_theme = 'powerlineish'
 "let g:airline#extensions#tabline#enabled = 1 " make tabs look crazy
 " only enable trailing whitespace checking
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
+let g:airline#extensions#wordcount#enabled = 0 " extremely slow on bigger files
 
 " ALE
 let g:ale_linters = {'text': ['proselint', 'vale']}
