@@ -1,0 +1,4 @@
+directory: ~/media/music            # The default library root directory.
+library: ~/media/music/library.db   # The default library database file to use.
+
+plugins: chroma duplicates missing convert
