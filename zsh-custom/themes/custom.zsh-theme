@@ -3,8 +3,14 @@
 
 local return_code="%(?..%{$fg[red]%}:%?%{$reset_color%})"
 
+# prefix hostname if ssh session was detected
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_TTY" ]; then
+    local hostname="$fg[red][%m]%{$reset_color%} "
+fi
+
 # primary prompt
-PROMPT='$FG[032]%(8~"[..]/")%7~\
+PROMPT='$hostname\
+$FG[032]%(8~"[..]/")%7~\
 $(git_prompt_info) \
 $FG[105]%1(j.[%j] .)%(!.#.$)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
