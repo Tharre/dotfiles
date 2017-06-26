@@ -5,7 +5,7 @@ local return_code="%(?..%{$fg[red]%}:%?%{$reset_color%})"
 
 # prefix hostname if ssh session was detected
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_TTY" ]; then
-    local hostname="$fg[red][%m]%{$reset_color%} "
+    local hostname="%{$fg[red]%}[%m]%{$reset_color%} "
 fi
 
 # primary prompt
