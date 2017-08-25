@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# Note that files MUST NOT CONTAIN NEWLINES!
+# Note that filenames MUST NOT CONTAIN NEWLINES!
 
 symlink_file() {
 	canonical=$(echo $1 | sed "s|^\./||")
