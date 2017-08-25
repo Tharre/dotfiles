@@ -165,13 +165,6 @@ alias open="xdg-open"
 ## env
 export EDITOR=vim
 
-# force 256 color mode
-if [ -n "$TMUX" ]; then
-	export TERM=screen-256color
-else
-	export TERM=xterm-256color
-fi
-
 # use gpg-agent as ssh-agent
 gpg-connect-agent /bye > /dev/null 2>&1
 export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
