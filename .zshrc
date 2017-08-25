@@ -125,6 +125,20 @@ function play {
                      -g "$*") --no-video
 }
 
+function set_xdg_dirs {
+	xdg-user-dirs-update --set DESKTOP ~/var/desktop
+	xdg-user-dirs-update --set DOWNLOAD ~/var/downloads
+	xdg-user-dirs-update --set TEMPLATES ~/var/templates
+	xdg-user-dirs-update --set PUBLICSHARE ~/share/public
+	xdg-user-dirs-update --set DOCUMENTS ~/var/documents
+	xdg-user-dirs-update --set MUSIC ~/media/music
+	xdg-user-dirs-update --set PICTURES ~/media/pictures
+	xdg-user-dirs-update --set VIDEOS ~/media/videos
+
+	rmdir ~/Desktop ~/Downloads ~/Templates ~/Public ~/Documents ~/Music \
+	      ~/Pictures ~/Videos
+}
+
 # update
 function update_dotfiles() {
 	dotfiles="$HOME/dotfiles"
