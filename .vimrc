@@ -81,8 +81,8 @@ map Q @
 map <S-m> :tabprevious<CR>
 map m :tabnext<CR>
 
-" remove trailing whitespaces on save
-autocmd BufWritePre * :%s/\s\+$//e
+" map F5 to removing trailing whitespace
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " save file with root permissions
 cmap w!! w !sudo tee % >/dev/null
