@@ -26,8 +26,8 @@ set hlsearch " Highlight search terms
 set ignorecase " Case-insensitive searching.
 set smartcase " But case-sensitive if expression contains a capital letter.
 
-set history=1000 " remember more commands and search history
-set undolevels=1000 " use many levels of undo
+set history=10000 " remember more commands and search history
+set undolevels=10000 " use many levels of undo
 
 set nobackup
 set noswapfile
