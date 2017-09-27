@@ -34,6 +34,7 @@
 [submodule ".vim/bundle/vim-distinguished"]
 	path = .vim/bundle/vim-distinguished
 	url = https://github.com/Lokaltog/vim-distinguished.git
+	branch = develop
 [submodule ".vim/bundle/gundo.vim"]
 	path = .vim/bundle/gundo.vim
 	url = https://github.com/sjl/gundo.vim.git
