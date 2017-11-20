@@ -5,7 +5,7 @@
 pass "$1" && exit
 
 # maybe gpg-agent is acting up, retry after restarting it
-gpgconf --kill gpg-agent >&2
+killall gpg-agent >&2
 pass "$1" && exit
 
 # if pass fails, request password manually
