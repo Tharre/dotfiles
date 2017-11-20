@@ -37,5 +37,8 @@ do
 	symlink_file "$file"
 done
 
+# fix .gnupg permissions
+chmod 700 .gnupg
+
 # remove broken symlinks
 find -L "$HOME" -maxdepth 1 -type l -delete
