@@ -143,3 +143,7 @@ let g:vim_markdown_math = 1
 let g:ale_linters = {
 \   'html': ['htmlhint', 'tidy'],
 \}
+
+" hexmode
+let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.rom'
+let g:hexmode_autodetect = 1

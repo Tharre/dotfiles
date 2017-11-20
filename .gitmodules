@@ -68,3 +68,6 @@
 [submodule ".vim/bundle/vim-shebang"]
 	path = .vim/bundle/vim-shebang
 	url = https://github.com/vitalk/vim-shebang.git
+[submodule ".vim/bundle/hexmode"]
+	path = .vim/bundle/hexmode
+	url = https://github.com/fidian/hexmode
