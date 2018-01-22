@@ -168,6 +168,12 @@ function suspend_after() {
 	systemctl suspend
 }
 
+function reset_usb() {
+	for i in /sys/bus/pci/drivers/[uoex]hci_hcd/*:*; do
+		echo "${i##*/}" | sudo tee "${i%/*}/"{unbind,bind}
+	done
+}
+
 ## PATH
 export PATH=$PATH:$HOME/bin
 
