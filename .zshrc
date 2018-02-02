@@ -185,9 +185,19 @@ alias open="xdg-open"
 ## env
 export EDITOR=vim
 
-# use gpg-agent as ssh-agent
-gpg-connect-agent /bye > /dev/null 2>&1
-export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
+## gpg-agent
+export GPG_TTY=$(tty)
+
+# Refresh gpg-agent tty in case user switches into an X session
+gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
+
+# if $SSH_AUTH_SOCK is not set or not pointing to a socket, use gpg-agent
+if [ ! -S "$SSH_AUTH_SOCK" ] && type "gpgconf" > /dev/null; then
+    unset SSH_AGENT_PID
+    if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+        export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    fi
+fi
 
 ## zsh options
 
