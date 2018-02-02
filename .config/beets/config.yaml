@@ -1,4 +1,11 @@
 directory: ~/media/music            # The default library root directory.
 library: ~/media/music/library.db   # The default library database file to use.
 
-plugins: chroma duplicates missing convert
+plugins: chroma duplicates missing convert replaygain scrub acousticbrainz
+         absubmit badfiles
+
+replaygain:
+    backend: bs1770gain
+    auto: yes
+    overwrite: yes
+    albumgain: yes
