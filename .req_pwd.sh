@@ -5,7 +5,8 @@
 pass "$1" && exit
 
 # maybe gpg-agent is acting up, retry after restarting it
-killall gpg-agent >&2
+gpg-connect-agent "KILLAGENT" /bye >&2 >/dev/null
+gpg-connect-agent /bye >&2 >/dev/null
 pass "$1" && exit
 
 # if pass fails, request password manually
