@@ -174,6 +174,27 @@ function reset_usb() {
 	done
 }
 
+function setup_borgbackup() {
+    setopt ERR_RETURN
+
+    BORG_SECRET=~/.borg_secret
+    BORG_SSH_KEY=~/.ssh/borg_key
+
+    if [ ! -f "$BORG_SECRET" ]; then
+        install -m600 /dev/null "$BORG_SECRET"
+        pass backups/$(hostname) > "$BORG_SECRET"
+    fi
+
+    if [ ! -f "$BORG_SSH_KEY" ]; then
+        ssh-keygen -q -N "" -f "$BORG_SSH_KEY"
+        KEY=$(< ${BORG_SSH_KEY}.pub)
+
+        printf '%s\n' "command=\"cd /srv/borgbackup/repos/$(hostname);borg serve --restrict-to-path /srv/borgbackup/repos/$(hostname)\",restrict $KEY" | ssh "$1" "cat >> /srv/borgbackup/.ssh/authorized_keys"
+
+        echo "Added key to remote server."
+    fi
+}
+
 ## PATH
 export PATH=$PATH:$HOME/bin
 
