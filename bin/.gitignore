@@ -7,5 +7,6 @@
 !set_xdg_dirs
 !setup_borgbackup
 !suspend_after
+!tmux-url-select
 !update_dotfiles
 !ut8font_test
