@@ -1,0 +1,11 @@
+*
+
+!.gitignore
+!play
+!req_pwd.sh
+!reset_usb
+!set_xdg_dirs
+!setup_borgbackup
+!suspend_after
+!update_dotfiles
+!ut8font_test

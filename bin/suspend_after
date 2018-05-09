@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+trap 'kill $!' INT TERM EXIT
+systemd-inhibit --what=handle-lid-switch sleep 1d &
+eval "$*"
+systemctl suspend

@@ -3,7 +3,7 @@ IMAPAccount tharre3@gmail.com
 # widely supported at this time
 Host imaps:imap.gmail.com
 User tharre3@gmail.com
-PassCmd "~/.req_pwd.sh email/tharre3@gmail.com"
+PassCmd "req_pwd.sh email/tharre3@gmail.com"
 # SSLType IMAPS
 SSLVersion TLSv1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt

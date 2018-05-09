@@ -40,5 +40,8 @@ done
 # fix .gnupg permissions
 chmod 700 .gnupg
 
+mkdir -p ~/bin
+find "$(pwd)/bin" -maxdepth 1 ! -path . -exec ln -sf {} ~/bin/ \;
+
 # remove broken symlinks
 find -L "$HOME" -maxdepth 1 -type l -delete

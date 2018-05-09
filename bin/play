@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# requires youtube-dl, mpv
+# Skip DASH manifest for speed purposes. This might actually disable
+# being able to specify things like 'bestaudio' as the requested format,
+# but try anyway.
+# Use "$*" so that quoting the requested song isn't necessary.
+mpv $(youtube-dl --default-search=ytsearch: \
+                 --max-downloads 1 \
+                 --youtube-skip-dash-manifest \
+                 --format="bestaudio/best" \
+                 -g "$*") --no-video

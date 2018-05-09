@@ -1,0 +1,20 @@
+#!/bin/sh -e
+
+dotfiles="$HOME/dotfiles"
+epoch_file="$dotfiles/.updated"
+epoch_curr=$(date +'%s')
+[ -e "$epoch_file" ] && epoch_old=$(<"$epoch_file")
+epoch_diff=$(($epoch_curr - ${epoch_old:-0}))
+max_time=$((60 * 60 * 24 * 7))
+
+if [ $(($epoch_diff / $max_time)) -ne 0 ]; then
+	echo "Updating dotfiles ..."
+
+	cd "$dotfiles"
+	git pull --rebase --stat origin master
+	echo $epoch_curr > "$epoch_file"
+	./install.sh
+	cd -
+
+	echo "Finished."
+fi
