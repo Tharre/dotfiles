@@ -1,0 +1,15 @@
+#!/bin/bash -e
+
+if ! [ -x "$(command -v pbpst)" ]; then
+	echo 'Error: pbpst is not installed' >&2
+	exit 1
+fi
+
+if [ $# -eq 0 ]; then
+	echo 'Error: no arguments supplied' >&2
+	exit 1
+fi
+
+# sed removes all of the coloring, and (hopefully) all the other escape
+# sequences that col doesn't deal with well.
+script -qfe >(sed 's:\x1B\[[0-9;?]*[mKJl]::g; 1d; $d' | col -bx | pbpst -S -x1d) -c "$*"
