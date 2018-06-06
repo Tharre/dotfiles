@@ -97,6 +97,9 @@ autocmd BufRead,BufNew *.md set filetype=markdown
 " java
 au BufNewFile,BufRead *.java set tabstop=4 softtabstop=4 shiftwidth=4 smarttab autoindent cc=121
 
+" PKGBUILD
+autocmd BufRead,BufNew PKGBUILD set filetype=sh
+
 " ========== plugin settings ==========
 " airline
 set laststatus=2
