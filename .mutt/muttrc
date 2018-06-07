@@ -117,7 +117,7 @@ auto_view text/html
 alternative_order text/plain text/enriched text/html # display html last
 
 # Compose View Options -------------------------------
-set realname = "Unkown"              # who am i?
+set realname = "Tharre"              # who am i?
 set envelope_from                    # which from?
 set sig_dashes                       # dashes before sig
 set edit_headers                     # show headers when composing
