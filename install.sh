@@ -41,7 +41,7 @@ done
 chmod 700 .gnupg
 
 mkdir -p ~/bin
-find "$(pwd)/bin" -maxdepth 1 -type f -exec ln -sf {} ~/bin/ \;
+find "$(pwd)/bin" -maxdepth 1 ! -name '.gitignore' -type f -exec ln -sf {} ~/bin/ \;
 
 # remove broken symlinks
 find -L "$HOME" -maxdepth 1 -type l -delete
