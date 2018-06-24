@@ -78,8 +78,8 @@ map <silent> <leader>2 :diffget BA<CR>:diffupdate<CR>
 map <silent> <leader>3 :diffget RE<CR>:diffupdate<CR>
 
 map Q @
-map <S-m> :tabprevious<CR>
-map m :tabnext<CR>
+map <S-m> :bprevious<CR>
+map m :bnext<CR>
 
 " map F5 to removing trailing whitespace
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
@@ -104,7 +104,8 @@ autocmd BufRead,BufNew PKGBUILD set filetype=sh
 " airline
 set laststatus=2
 let g:airline_theme = 'powerlineish'
-"let g:airline#extensions#tabline#enabled = 1 " make tabs look crazy
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 " only enable trailing whitespace checking
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 let g:airline#extensions#wordcount#enabled = 0 " extremely slow on bigger files
