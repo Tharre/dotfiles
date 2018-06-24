@@ -32,8 +32,8 @@ set undolevels=10000 " use many levels of undo
 set nobackup
 set noswapfile
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=8
+set shiftwidth=8
 set textwidth=80
 set cc=81
 "set expandtab
