@@ -115,6 +115,7 @@ export PATH="$HOME/bin:$PATH"
 
 alias xclip="xclip -selection c"
 alias open="xdg-open"
+alias wee='WEECHAT_PASSPHRASE="$(pass personal/weechat)" weechat'
 
 ## env
 export EDITOR=vim
