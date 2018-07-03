@@ -22,9 +22,6 @@
 [submodule "jedi-vim"]
 	path = .vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
-[submodule "rust.vim"]
-	path = .vim/bundle/rust.vim
-	url = https://github.com/wting/rust.vim.git
 [submodule "vim-ledger"]
 	path = .vim/bundle/vim-ledger
 	url = https://github.com/ledger/vim-ledger.git
@@ -71,3 +68,6 @@
 [submodule "hexmode"]
 	path = .vim/bundle/hexmode
 	url = https://github.com/fidian/hexmode
+[submodule ".vim/bundle/rust.vim"]
+	path = .vim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim
