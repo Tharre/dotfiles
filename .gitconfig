@@ -10,3 +10,7 @@
 	autosetuprebase = always
 [merge]
 	tool = vimdiff
+[transfer]
+	fsckobjects = true
+[fetch]
+	fsckobjects = true
