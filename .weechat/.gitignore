@@ -1,2 +1,4 @@
 weechat.log
 logs/
+script/plugins.xml.gz
+zncplayback_times.json
