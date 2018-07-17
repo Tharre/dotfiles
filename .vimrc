@@ -170,6 +170,8 @@ nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 " Automatically import
 nmap <leader>ai <Plug>(JavaComplete-Imports-AddMissing)
 
+nnoremap <C-p> :Files<cr>
+
 " }}}
 
 " airline {{{
@@ -193,9 +195,8 @@ let g:ale_linters = {
 \}
 " }}}
 
-" ctrlp
-let g:ctrlp_max_files = 1000000
-let g:ctrlp_cmd = 'CtrlPMixed'
+" fzf
+let $FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
