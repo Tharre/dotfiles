@@ -1,77 +1,101 @@
-" Plugins for review:
-"   'msanders/snipmate.vim'
-"   'godlygeek/tabular'
-"   'plasticboy/vim-markdown'
-" Consider using sections like this:
-"     Section Name {{{
-"     set number "This will be folded
-"     }}}
+" ~/.vimrc
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 execute pathogen#helptags()
-set nocompatible " Be iMproved
-let mapleader="," " set leader early as otherwise it wouldn't work
-filetype plugin indent on
 
-" ========== general settings ==========
+" options {{{
+" ===========
+
+set nocompatible " Be iMproved
+let mapleader="," " set leader early to avoid problems
+
+filetype plugin indent on
+syntax enable
+
 set encoding=utf-8
 set ff=unix
 set number
+set relativenumber
 set clipboard=unnamedplus
 set showmatch " show matching brackets
+set hidden
+set autoread
 
 set incsearch " Find as you type search
 set hlsearch " Highlight search terms
 set ignorecase " Case-insensitive searching.
 set smartcase " But case-sensitive if expression contains a capital letter.
 
+set complete-=i
+set nrformats-=octal
+set ttimeout
+set ttimeoutlen=100
+
 set history=10000 " remember more commands and search history
 set undolevels=10000 " use many levels of undo
 
 set nobackup
 set noswapfile
+set viminfo^=! " always save upper case variables to viminfo file
 
+set autoindent
 set tabstop=8
+set smarttab
+set backspace=indent,eol,start
 set shiftwidth=8
 set textwidth=80
 set cc=81
-"set expandtab
-
-syntax enable
-set background=dark
-colorscheme distinguished
 
 set list
-set listchars=tab:>-,trail:~
+set listchars=tab:>-,trail:~,extends:>,precedes:<,nbsp:+
 
 set lazyredraw
 set wildmenu
-
-set relativenumber
-
 set wildignore+=*.a,*.o,*.class
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png
 set wildignore+=.DS_Store,.git,.hg,.svn
 set wildignore+=*~,*.swp,*.tmp
 
+set scrolloff=1 " always show at least one line above/below the cursor.
+set sidescrolloff=5
+set display+=lastline
+
+set formatoptions+=j " delete comment character when joining commented lines
+
+if &sessionoptions =~# '\<options\>'
+  set sessionoptions-=options
+  set sessionoptions+=localoptions
+endif
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
+  set t_Co=16
+endif
+
+if !has('gui_running') && &t_Co != 256
+  colorscheme  delek
+else
+  colorscheme distinguished
+endif
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
+" }}}
+" general mappings {{{
+" ====================
+" Plugin-specific mappings can be found under plugin settings->mappings
+
+inoremap <C-U> <C-G>u<C-U>
+
 " jk is escape
 inoremap jk <esc>
 
-augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
-
 " switch buffers with space!
 nnoremap <space> :call SwitchBuffer()<CR>
-
-function! SwitchBuffer()
-    exe "ls"
-    let c = nr2char(getchar())
-    exe "b " . c
-    redraw
-endfunction
 
 map <silent> <leader>1 :diffget LO<CR>:diffupdate<CR>
 map <silent> <leader>2 :diffget BA<CR>:diffupdate<CR>
@@ -90,30 +114,44 @@ cmap w!! w !sudo tee % >/dev/null
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
-" ========== file specific settings ==========
+" }}}
+" autocommands {{{
+" ================
+
+" filetype specific {{{
+
 " Markdown
 autocmd BufRead,BufNew *.md set filetype=markdown
 
 " java
-au BufNewFile,BufRead *.java set tabstop=4 softtabstop=4 shiftwidth=4 smarttab autoindent cc=121
+au BufNewFile,BufRead *.java set tabstop=4 softtabstop=4 shiftwidth=4 cc=121
 
 " PKGBUILD
 autocmd BufRead,BufNew PKGBUILD set filetype=sh
 
-" ========== plugin settings ==========
-" airline
-set laststatus=2
-let g:airline_theme = 'powerlineish'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-" only enable trailing whitespace checking
-let g:airline#extensions#whitespace#checks = [ 'trailing' ]
-let g:airline#extensions#wordcount#enabled = 0 " extremely slow on bigger files
+" }}}
 
-" ALE
-let g:ale_linters = {'text': ['proselint', 'vale']}
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+augroup reload_vimrc
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
+
+" }}}
+" functions {{{
+" =============
+
+function! SwitchBuffer()
+    exe "ls"
+    let c = nr2char(getchar())
+    exe "b " . c
+    redraw
+endfunction
+
+" }}}
+" plugin settings {{{
+" ===================
+
+" mappings {{{
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
@@ -124,6 +162,37 @@ nmap ga <Plug>(EasyAlign)
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 
+" javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+" Automatically import
+nmap <leader>ai <Plug>(JavaComplete-Imports-AddMissing)
+
+" }}}
+
+" airline {{{
+set laststatus=2
+let g:airline_theme = 'powerlineish'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+" only enable trailing whitespace checking
+let g:airline#extensions#whitespace#checks = [ 'trailing' ]
+let g:airline#extensions#wordcount#enabled = 0 " extremely slow on bigger files
+" }}}
+
+" ALE {{{
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" html
+let g:ale_linters = {
+\   'html': ['htmlhint', 'tidy'],
+\   'text': ['proselint', 'vale'],
+\}
+" }}}
+
 " ctrlp
 let g:ctrlp_max_files = 1000000
 let g:ctrlp_cmd = 'CtrlPMixed'
@@ -131,22 +200,12 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 
-" javacomplete2
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-
-" Automatically import
-nmap <leader>ai <Plug>(JavaComplete-Imports-AddMissing)
-
 " markdown
 let g:vim_markdown_math = 1
 
-" html
-let g:ale_linters = {
-\   'html': ['htmlhint', 'tidy'],
-\}
-
 " hexmode
 let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.rom'
+
+" }}}
+
+" vim:fdm=marker
