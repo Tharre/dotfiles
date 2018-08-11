@@ -1,0 +1,30 @@
+# my custom zsh theme
+# requires `setopt PROMPT_SUBST`
+
+
+# prefix hostname if ssh session was detected
+function prompt_print_hostname() {
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_TTY" ]; then
+        printf "%s" "%F{red}[%m]%f "
+    fi
+}
+
+function git_prompt_parse_dirty() {
+    local FLAGS=("--porcelain" "--ignore-submodules=dirty")
+    local STATUS=$(command git status $FLAGS | tail -n1)
+    if [[ -n $STATUS ]]; then
+        printf "%s" "%F{214}*%f"
+    fi
+}
+
+function git_prompt_info() {
+    local ref
+    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+
+    printf "%s" "%F{075} (${ref#refs/heads/}$(git_prompt_parse_dirty)%F{075})%f"
+}
+
+PS1='$(prompt_print_hostname)%F{032}%(8~"[..]/")%7~$(git_prompt_info) %F{105}%1(j.[%j] .)%(!.#.$)%f '
+PS2='%F{red}\ %f'
+RPS1="%(?..%F{red}:%?%f)"

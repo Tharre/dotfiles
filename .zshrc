@@ -1,130 +1,132 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+ZSH_HOME="${ZDOTDIR:-$HOME}"
+fpath=( "$ZSH_HOME/.zsh" "$ZSH_HOME/.zsh/zsh-completions/src" $fpath )
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="custom"
+autoload -U compaudit compinit
+compinit -d "${XDG_CONFIG_HOME:-$HOME/.config}/zcompdump"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=~/dotfiles/zsh-custom
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-## functions
-function noproxy {
-	unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY ftp_proxy FTP_PROXY no_proxy
-
-	# change dconf
-	dconf reset -f /system/proxy/
-
-	proxy_update
-}
-
-	function setproxy {
-	base_proxy="proxy.domain.com"
-	base_proxy_port=8080
-
-	dconf_proxy="'$base_proxy'"
-	env_proxy="http://$base_proxy:$base_proxy_port"
-
-	http_proxy=$env_proxy
-	HTTP_PROXY=$env_proxy
-	https_proxy=$env_proxy
-	HTTPS_PROXY=$env_proxy
-	ftp_proxy=$env_proxy
-	FTP_PROXY=$env_proxy
-	no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-	export http_proxy https_proxy HTTP_PROXY HTTPS_PROXY ftp_proxy FTP_PROXY no_proxy
-
-	# change dconf
-	dconf write /system/proxy/mode "'manual'"
-	dconf write /system/proxy/ignore-hosts "['localhost', '127.0.0.0/8', '10.0.0.0/8', '192.168.0.0/16', '172.16.0.0/12']"
-	dconf write /system/proxy/http/enabled true
-	dconf write /system/proxy/http/host "$dconf_proxy"
-	dconf write /system/proxy/http/port "$base_proxy_port"
-	dconf write /system/proxy/https/host "$dconf_proxy"
-	dconf write /system/proxy/https/port "$base_proxy_port"
-	dconf write /system/proxy/ftp/host "$dconf_proxy"
-	dconf write /system/proxy/ftp/port "$base_proxy_port"
-
-	proxy_update
-}
-
-# restart/reload applications for proxy settings to take effect
-function proxy_update {
-	killall -q dropbox
-	dropbox-cli start
-}
-
-function 256color_test {
-	( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;
-	for i in {0..256};
-		do
-		o=00$i;
-		echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;
-	done )
-}
-
-## PATH
-export PATH="$HOME/bin:$PATH"
-
-## alias
-
+## aliases
+autoload -Uz run-help
+unalias run-help
+alias help=run-help
+alias ls='ls --color=auto'
+alias lsa='ls -lah'
+alias history='fc -l 1'
 alias xclip="xclip -selection c"
 alias open="xdg-open"
 alias wee='WEECHAT_PASSPHRASE="$(pass personal/weechat)" weechat'
+alias which-command='whence'
 
-## env
-export EDITOR=vim
+## zsh options
+setopt extended_glob
+setopt long_list_jobs # TODO:?
+setopt interactivecomments
+bindkey -e
+bindkey '^r' history-incremental-search-backward
+bindkey ' ' magic-space # expand !! and alike
 
-## gpg-agent
-export GPG_TTY=$(tty)
+# this still doesn't catch some attacks, see:
+# https://thejh.net/misc/website-terminal-copy-paste
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
 
-# Refresh gpg-agent tty in case user switches into an X session
-gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
+## history
+HISTFILE="$ZSH_HOME/.zsh_history"
+HISTSIZE=100000000
+SAVEHIST=$HISTSIZE
+setopt extended_history
+setopt hist_ignore_dups
+setopt inc_append_history
+setopt share_history
+setopt hist_expire_dups_first
+
+## completion
+zmodload zsh/complist
+bindkey -M menuselect '^o' accept-and-infer-next-history # TODO:
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion::complete:*' cache-path "${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+setopt complete_aliases
+unsetopt menu_complete
+
+zmodload zsh/terminfo
+# Make sure that the terminal is in application mode when zle is active, since
+# only then values from $terminfo are valid
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+    function zle-line-init() {
+        echoti smkx
+    }
+    function zle-line-finish() {
+        echoti rmkx
+    }
+    zle -N zle-line-init
+    zle -N zle-line-finish
+fi
+
+autoload -U up-line-or-beginning-search
+zle -N up-line-or-beginning-search
+bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+
+setopt PROMPT_SUBST
+autoload -Uz promptinit
+promptinit
+prompt 'custom'
+
+unset ZSH_HOME
+
+## functions
+function 256color_test {
+    ( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;
+    for i in {0..256};
+        do
+        o=00$i;
+        echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;
+    done )
+}
+
+function title {
+    case "$TERM" in
+      cygwin|xterm*|putty*|rxvt*|ansi)
+        print -Pn "\e]1;$1:q\a"
+        ;;
+      screen*)
+        print -Pn "\ek$1:q\e\\"
+        ;;
+      *)
+        if [[ -n "$terminfo[fsl]" ]] && [[ -n "$terminfo[tsl]" ]]; then
+            echoti tsl
+            print -Pn "$1"
+            echoti fsl
+        fi
+        ;;
+    esac
+}
+
+function set_title_precmd {
+    title "%15<..<%~%<<" $ZSH_THEME_TERM_TITLE_IDLE
+}
+
+function set_tilte_preexec {
+    setopt extended_glob
+
+    # cmd name only, or if this is sudo or ssh, the next cmd
+    local CMD=${1[(wr)^(*=*|sudo|ssh|mosh|rake|-*)]:gs/%/%%}
+    local LINE="${2:gs/%/%%}"
+
+    title '$CMD' '%100>...>$LINE%<<'
+}
+
+precmd_functions+=(set_title_precmd)
+preexec_functions+=(set_tilte_preexec)
+
+# zshenv may not be attached to a tty, so we set this here instead
+export GPG_TTY="$(tty)"
 
 # if $SSH_AUTH_SOCK is not set or not pointing to a socket, use gpg-agent
 if [ ! -S "$SSH_AUTH_SOCK" ] && type "gpgconf" > /dev/null; then
@@ -134,18 +136,8 @@ if [ ! -S "$SSH_AUTH_SOCK" ] && type "gpgconf" > /dev/null; then
     fi
 fi
 
-## zsh options
-
-bindkey -M viins ' ' magic-space
-setopt EXTENDED_GLOB
-export HISTSIZE=100000000
-export SAVEHIST=$HISTSIZE
+# Refresh gpg-agent tty in case user switches into an X session
+gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
 
 ## startup
 update_dotfiles
-
-if type "archey3" > /dev/null; then
-	archey3 # nice system information and arch logo
-fi
-
-[ -e ~/TODO ] && cat ~/TODO
