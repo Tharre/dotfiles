@@ -13,4 +13,4 @@
 [transfer]
 	fsckobjects = true
 [fetch]
-	fsckobjects = true
+	fsckobjects = false
