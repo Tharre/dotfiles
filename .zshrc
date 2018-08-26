@@ -31,13 +31,12 @@ zle -N bracketed-paste bracketed-paste-magic
 
 ## history
 HISTFILE="$ZSH_HOME/.zsh_history"
-HISTSIZE=100000000
-SAVEHIST=$HISTSIZE
+HISTSIZE=10000
+SAVEHIST=100000000
 setopt extended_history
 setopt hist_ignore_dups
 setopt inc_append_history
 setopt share_history
-setopt hist_expire_dups_first
 
 ## completion
 zmodload zsh/complist
