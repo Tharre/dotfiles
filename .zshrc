@@ -41,6 +41,7 @@ setopt share_history
 ## completion
 zmodload zsh/complist
 bindkey -M menuselect '^o' accept-and-infer-next-history # TODO:
+bindkey -M menuselect '^[[Z' reverse-menu-complete
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
