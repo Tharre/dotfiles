@@ -14,3 +14,7 @@
 	fsckobjects = true
 [fetch]
 	fsckobjects = false
+[sendemail]
+	smtpencryption = tls
+	smtpserver = /usr/bin/msmtp
+	confirm = auto
