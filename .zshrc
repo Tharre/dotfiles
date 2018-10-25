@@ -6,7 +6,7 @@ compinit -d "${XDG_CONFIG_HOME:-$HOME/.config}/zcompdump"
 
 ## aliases
 autoload -Uz run-help
-unalias run-help
+unalias run-help &> /dev/null
 alias help=run-help
 alias ls='ls --color=auto'
 alias lsa='ls -lah'
