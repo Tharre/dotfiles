@@ -9,3 +9,5 @@ set crypt_replyencrypt = yes
 
 # Attempt to verify email signatures automatically
 set crypt_verify_sig = yes
+
+set pgp_auto_decode = yes
