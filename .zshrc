@@ -141,3 +141,7 @@ gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
 
 ## startup
 update_dotfiles
+
+if (( $+commands[archey3] )) ; then
+    archey3
+fi
