@@ -112,7 +112,7 @@ function set_title_precmd {
     title "%15<..<%~%<<" $ZSH_THEME_TERM_TITLE_IDLE
 }
 
-function set_tilte_preexec {
+function set_title_preexec {
     setopt extended_glob
 
     # cmd name only, or if this is sudo or ssh, the next cmd
@@ -123,7 +123,7 @@ function set_tilte_preexec {
 }
 
 precmd_functions+=(set_title_precmd)
-preexec_functions+=(set_tilte_preexec)
+preexec_functions+=(set_title_preexec)
 
 # zshenv may not be attached to a tty, so we set this here instead
 export GPG_TTY="$(tty)"
