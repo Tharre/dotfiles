@@ -11,7 +11,7 @@ function prompt_print_hostname() {
 
 function git_prompt_parse_dirty() {
     local FLAGS=("--porcelain" "--ignore-submodules=dirty")
-    local STATUS=$(command git status $FLAGS | tail -n1)
+    local STATUS=$(command git status $FLAGS 2> /dev/null | tail -n1)
     if [[ -n $STATUS ]]; then
         printf "%s" "%F{214}*%f"
     fi
