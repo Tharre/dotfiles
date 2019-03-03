@@ -121,7 +121,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 " filetype specific {{{
 
 " Markdown
-autocmd BufRead,BufNew *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 " java
 au BufNewFile,BufRead *.java set tabstop=4 softtabstop=4 shiftwidth=4 cc=121
