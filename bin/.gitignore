@@ -1,6 +1,7 @@
 *
 
 !.gitignore
+!capture_output
 !play
 !req_pwd.sh
 !reset_usb
