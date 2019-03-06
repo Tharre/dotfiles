@@ -15,6 +15,7 @@ alias xclip="xclip -selection c"
 alias open="xdg-open"
 alias wee='WEECHAT_PASSPHRASE="$(pass personal/weechat)" weechat'
 alias which-command='whence'
+alias ta='exec tmux new -A -s 1'
 
 ## zsh options
 setopt extended_glob
