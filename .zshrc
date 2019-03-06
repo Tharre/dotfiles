@@ -17,6 +17,9 @@ alias wee='WEECHAT_PASSPHRASE="$(pass personal/weechat)" weechat'
 alias which-command='whence'
 alias ta='exec tmux new -A -s 1'
 
+# https://unix.stackexchange.com/questions/250690/how-to-configure-ctrlw-as-delete-word-in-zsh
+WORDCHARS=''
+
 ## zsh options
 setopt extended_glob
 setopt long_list_jobs # TODO:?
