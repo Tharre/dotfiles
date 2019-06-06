@@ -77,7 +77,11 @@ endif
 if !has('gui_running') && &t_Co != 256
   colorscheme  delek
 else
+  " enable true color support, see :h xterm-true-color
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   colorscheme distinguished
+  set termguicolors
 endif
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
