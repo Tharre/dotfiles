@@ -21,9 +21,7 @@ set clipboard=unnamedplus
 set showmatch " show matching brackets
 set hidden
 set autoread
-" CVE-2002-1377, CVE-2016-1248,
-" https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
-set nomodeline
+set nomodeline " CVE-2002-1377, CVE-2016-1248, CVE-2019-12735
 
 set incsearch " Find as you type search
 set hlsearch " Highlight search terms
