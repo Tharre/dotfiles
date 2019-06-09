@@ -184,6 +184,7 @@ set laststatus=2
 let g:airline_theme = 'powerlineish'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#hunks#non_zero_only = 1
 " only enable trailing whitespace checking
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 let g:airline#extensions#wordcount#enabled = 0 " extremely slow on bigger files
@@ -212,6 +213,8 @@ let g:vim_markdown_math = 1
 " hexmode
 let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.rom'
 
+" signify
+let g:signify_realtime = 1
 " }}}
 
 " vim:fdm=marker
