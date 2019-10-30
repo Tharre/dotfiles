@@ -112,6 +112,16 @@ function title {
     esac
 }
 
+function refresh_tmux {
+    if [ -n "$TMUX" ]; then
+        eval $(tmux showenv -s SSH_CONNECTION)
+        eval $(tmux showenv -s SSH_CLIENT)
+        eval $(tmux showenv -s SSH_TTY)
+        eval $(tmux showenv -s SSH_AUTH_SOCK)
+        eval $(tmux showenv -s DISPLAY)
+    fi
+}
+
 function set_title_precmd {
     title "%15<..<%~%<<" $ZSH_THEME_TERM_TITLE_IDLE
 }
@@ -126,8 +136,12 @@ function set_title_preexec {
     title '$CMD' '%100>...>$LINE%<<'
 }
 
+function refresh_preexec {
+    refresh_tmux
+}
+
 precmd_functions+=(set_title_precmd)
-preexec_functions+=(set_title_preexec)
+preexec_functions+=(set_title_preexec refresh_preexec)
 
 # zshenv may not be attached to a tty, so we set this here instead
 export GPG_TTY="$(tty)"
